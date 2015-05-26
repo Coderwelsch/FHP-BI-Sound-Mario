@@ -13,7 +13,7 @@ document.onreadystatechange = function (event) {
       	"mods": {
       		"Infinite Lives": true,
 			"Super Fireballs": true,
-			"Invincibility": true
+			"Invincibility": false
 		}
    	} );
    
@@ -57,7 +57,7 @@ function initAudio ( callback ) {
 		resetVisualiser();
 	}
 
-	console.log( window.audio.name );
+	console.log( window.audio.name, $( theme ).attr( 'name' ) );
 
 	window.firstAudioInit = true;
 	
@@ -82,7 +82,7 @@ function initAnalyser () {
 	window.frequencyEvents = {
 		'Overworld': {
 			0: {
-				range: [ 120, 125 ],
+				range: [ 100, 125 ],
 				action: highJump,
 				name: 'Jump'
 			},
@@ -97,7 +97,7 @@ function initAnalyser () {
 				name: 'Shoot'
 			},
 			3: {
-				range: [ 50, 100 ],
+				range: [ 30, 120 ],
 				action: run,
 				name: 'Forward'
 			},
@@ -109,12 +109,12 @@ function initAnalyser () {
 		},
 		'Star': {
 			0: {
-				range: [ 120, 125 ],
+				range: [ 110, 125 ],
 				action: highJump,
 				name: 'Jump'
 			},
 			1: {
-				range: [ 0, 10 ],
+				range: [ 10, 20 ],
 				action: crouch,
 				name: 'Crouch'
 			}, 
@@ -136,7 +136,7 @@ function initAnalyser () {
 		},
 		'Overworld Star': {
 			0: {
-				range: [ 120, 125 ],
+				range: [ 110, 125 ],
 				action: highJump,
 				name: 'Jump'
 			},
@@ -163,7 +163,7 @@ function initAnalyser () {
 		},
 		'Hurry Overworld': {
 			0: {
-				range: [ 120, 125 ],
+				range: [ 110, 125 ],
 				action: highJump,
 				name: 'Jump'
 			},
@@ -205,12 +205,12 @@ function initAnalyser () {
 				name: 'Shoot'
 			},
 			3: {
-				range: [ 20, 70 ],
+				range: [ 20, 80 ],
 				action: run,
 				name: 'Forward'
 			},
 			4: {
-				range: [ 70, 80 ],
+				range: [ 50, 60 ],
 				action: runBack,
 				name: 'Back'
 			}
@@ -232,12 +232,12 @@ function initAnalyser () {
 				name: 'Shoot'
 			},
 			3: {
-				range: [ 20, 70 ],
+				range: [ 10, 100 ],
 				action: run,
 				name: 'Forward'
 			},
 			4: {
-				range: [ 70, 80 ],
+				range: [ 50, 60 ],
 				action: runBack,
 				name: 'Back'
 			}
@@ -257,8 +257,10 @@ function initAnalyser () {
 
 function initVisualiser () {
 	for ( var key in frequencyEvents[ window.audio.name ] ) {
-		var $item = $( '<div class="column"><div class="box"></div></div>' );
-		var item = frequencyEvents[ window.audio.name ][ key ],
+		var item = frequencyEvents[ window.audio.name ][ key ];
+		var $item = $( '<div class="column"><div class="box"></div></div>' )
+			.attr( 'name', window.audio.name ),
+
 			$range = $( '<div class="range"></div>' )
 				.css( {
 					top: 100 * ( (255 - item.range[ 1 ]) / 255 ) + '%',
@@ -266,9 +268,9 @@ function initVisualiser () {
 				} )
 				.appendTo( $item );
 
-			var $label = $( '<p class="label"></p>' )
-				.text( item.name )
-				.appendTo( $item );
+		var $label = $( '<p class="label"></p>' )
+			.text( item.name )
+			.appendTo( $item );
 
 		$item.appendTo( window.$visualiser );
 	}
@@ -373,7 +375,7 @@ function run () {
 	if ( !playerEvents[ keyCode ] ) {
 		activateKey( keyCode );
 
-		setTimeout( releaseKey, 200, keyCode );
+		setTimeout( releaseKey, 400, keyCode );
 	}
 }
 
