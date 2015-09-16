@@ -1,4 +1,4 @@
-FullScreenMario.prototype.settings.maps = {
+FullScreenMario.FullScreenMario.settings.maps = {
     "mapDefault": "1-1",
     "locationDefault": "0",
     "groupTypes": ["Character", "Solid", "Scenery", "Text"],
@@ -17,68 +17,68 @@ FullScreenMario.prototype.settings.maps = {
         "canscroll"
     ],
     "screenVariables": {
-        "bottomDeathDifference": function (EightBitter) {
-            return EightBitter.unitsize * 12;
+        "bottomDeathDifference": function (GameStarter) {
+            return GameStarter.unitsize * 12;
         },
-        "bottomPlatformMax": function (EightBitter) {
-            var area = EightBitter.MapsHandler.getArea(),
-                diff = EightBitter.MapScreener.bottomDeathDifference;
+        "bottomPlatformMax": function (GameStarter) {
+            var area = GameStarter.MapsHandler.getArea(),
+                diff = GameStarter.MapScreener.bottomDeathDifference;
                 
             if (!area) {
                 return -1;
             }
                 
-            return (area.floor + diff) * EightBitter.unitsize;
+            return (area.floor + diff) * GameStarter.unitsize;
         },
-        "gravity": function (EightBitter) {
-            var area = EightBitter.MapsHandler.getArea();
+        "gravity": function (GameStarter) {
+            var area = GameStarter.MapsHandler.getArea();
             
             if (area && area.underwater) {
-                return EightBitter.gravity / 2.8;
+                return GameStarter.gravity / 2.8;
             }
             
-            return EightBitter.gravity;
+            return GameStarter.gravity;
         }
     },
-    "onSpawn": FullScreenMario.prototype.addPreThing,
+    "onSpawn": FullScreenMario.FullScreenMario.prototype.addPreThing,
     "macros": {
-        "Example": FullScreenMario.prototype.macroExample,
-        "Fill": FullScreenMario.prototype.macroFillPreThings,
-        "Pattern": FullScreenMario.prototype.macroFillPrePattern,
-        "Floor": FullScreenMario.prototype.macroFloor,
-        "Pipe": FullScreenMario.prototype.macroPipe,
-        "PipeCorner": FullScreenMario.prototype.macroPipeCorner,
-        "Tree": FullScreenMario.prototype.macroTree,
-        "Shroom": FullScreenMario.prototype.macroShroom,
-        "Water": FullScreenMario.prototype.macroWater,
-        "CastleSmall": FullScreenMario.prototype.macroCastleSmall,
-        "CastleLarge": FullScreenMario.prototype.macroCastleLarge,
-        "Ceiling": FullScreenMario.prototype.macroCeiling,
-        "Bridge": FullScreenMario.prototype.macroBridge,
-        "Scale": FullScreenMario.prototype.macroScale,
-        "PlatformGenerator": FullScreenMario.prototype.macroPlatformGenerator,
-        "WarpWorld": FullScreenMario.prototype.macroWarpWorld,
-        "CheepsStart": FullScreenMario.prototype.macroCheepsStart,
-        "CheepsStop": FullScreenMario.prototype.macroCheepsStop,
-        "BulletBillsStart": FullScreenMario.prototype.macroBulletBillsStart,
-        "BulletBillsStop": FullScreenMario.prototype.macroBulletBillsStop,
-        "LakituStop": FullScreenMario.prototype.macroLakituStop,
-        "StartInsideCastle": FullScreenMario.prototype.macroStartInsideCastle,
-        "EndOutsideCastle": FullScreenMario.prototype.macroEndOutsideCastle,
-        "EndInsideCastle": FullScreenMario.prototype.macroEndInsideCastle,
-        "Section": FullScreenMario.prototype.macroSection,
-        "SectionPass": FullScreenMario.prototype.macroSectionPass,
-        "SectionFail": FullScreenMario.prototype.macroSectionFail,
-        "SectionDecider": FullScreenMario.prototype.macroSectionDecider
+        "Example": FullScreenMario.FullScreenMario.prototype.macroExample,
+        "Fill": FullScreenMario.FullScreenMario.prototype.macroFillPreThings,
+        "Pattern": FullScreenMario.FullScreenMario.prototype.macroFillPrePattern,
+        "Floor": FullScreenMario.FullScreenMario.prototype.macroFloor,
+        "Pipe": FullScreenMario.FullScreenMario.prototype.macroPipe,
+        "PipeCorner": FullScreenMario.FullScreenMario.prototype.macroPipeCorner,
+        "Tree": FullScreenMario.FullScreenMario.prototype.macroTree,
+        "Shroom": FullScreenMario.FullScreenMario.prototype.macroShroom,
+        "Water": FullScreenMario.FullScreenMario.prototype.macroWater,
+        "CastleSmall": FullScreenMario.FullScreenMario.prototype.macroCastleSmall,
+        "CastleLarge": FullScreenMario.FullScreenMario.prototype.macroCastleLarge,
+        "Ceiling": FullScreenMario.FullScreenMario.prototype.macroCeiling,
+        "Bridge": FullScreenMario.FullScreenMario.prototype.macroBridge,
+        "Scale": FullScreenMario.FullScreenMario.prototype.macroScale,
+        "PlatformGenerator": FullScreenMario.FullScreenMario.prototype.macroPlatformGenerator,
+        "WarpWorld": FullScreenMario.FullScreenMario.prototype.macroWarpWorld,
+        "CheepsStart": FullScreenMario.FullScreenMario.prototype.macroCheepsStart,
+        "CheepsStop": FullScreenMario.FullScreenMario.prototype.macroCheepsStop,
+        "BulletBillsStart": FullScreenMario.FullScreenMario.prototype.macroBulletBillsStart,
+        "BulletBillsStop": FullScreenMario.FullScreenMario.prototype.macroBulletBillsStop,
+        "LakituStop": FullScreenMario.FullScreenMario.prototype.macroLakituStop,
+        "StartInsideCastle": FullScreenMario.FullScreenMario.prototype.macroStartInsideCastle,
+        "EndOutsideCastle": FullScreenMario.FullScreenMario.prototype.macroEndOutsideCastle,
+        "EndInsideCastle": FullScreenMario.FullScreenMario.prototype.macroEndInsideCastle,
+        "Section": FullScreenMario.FullScreenMario.prototype.macroSection,
+        "SectionPass": FullScreenMario.FullScreenMario.prototype.macroSectionPass,
+        "SectionFail": FullScreenMario.FullScreenMario.prototype.macroSectionFail,
+        "SectionDecider": FullScreenMario.FullScreenMario.prototype.macroSectionDecider
     },
     "entrances": {
-        "Normal": FullScreenMario.prototype.mapEntranceNormal,
-        "Plain": FullScreenMario.prototype.mapEntrancePlain,
-        "Castle": FullScreenMario.prototype.mapEntranceCastle,
-        "Walking": FullScreenMario.prototype.mapEntranceWalking,
-        "Vine": FullScreenMario.prototype.mapEntranceVine,
-        "PipeVertical": FullScreenMario.prototype.mapEntrancePipeVertical,
-        "PipeHorizontal": FullScreenMario.prototype.mapEntrancePipeHorizontal,
+        "Normal": FullScreenMario.FullScreenMario.prototype.mapEntranceNormal,
+        "Plain": FullScreenMario.FullScreenMario.prototype.mapEntrancePlain,
+        "Castle": FullScreenMario.FullScreenMario.prototype.mapEntranceCastle,
+        "Walking": FullScreenMario.FullScreenMario.prototype.mapEntranceWalking,
+        "Vine": FullScreenMario.FullScreenMario.prototype.mapEntranceVine,
+        "PipeVertical": FullScreenMario.FullScreenMario.prototype.mapEntrancePipeVertical,
+        "PipeHorizontal": FullScreenMario.FullScreenMario.prototype.mapEntrancePipeHorizontal,
     },
     "patterns": (function (patterns) {
         var pattern,
@@ -197,93 +197,8 @@ FullScreenMario.prototype.settings.maps = {
         }
         
         return library;
-    })([ 
+    })([
         {
-            "name": "basic-interface",
-            "locations": [{
-                "entry": "Plain"
-            }],
-            "areas": [{
-                "setting": "Overworld",
-                "creation": [{
-                    "macro": "Floor",
-                    "x": 0,
-                    "y": 0,
-                    "width": 1024
-                }, {
-                    "thing": "Mushroom",
-                    "x": 32,
-                    "y": 8
-                }, {
-                    "thing": "FireFlower",
-                    "x": 40,
-                    "y": 8
-                }, {
-                    "thing": "FireFlower",
-                    "x": 48,
-                    "y": 8
-                }, {
-                    "thing": "FireFlower",
-                    "x": 56,
-                    "y": 8
-                }, {
-                    "thing": "Brick",
-                    "x": 0,
-                    "y": 96,
-                    "height": 96,
-                    "contents": ""
-                }, {
-                    "thing": "Goomba",
-                    "x": 168,
-                    "y": 16
-                }, {
-                    "thing": "Koopa",
-                    "x": 184,
-                    "y": 16,
-                    "smart": false,
-                    "jumping": false,
-                    "flying": false
-                }, {
-                    "thing": "Brick",
-                    "x": 1016,
-                    "y": 96,
-                    "height": 96,
-                    "contents": ""
-                }, {
-                    "thing": "Brick",
-                    "x": 160,
-                    "y": 24,
-                    "width": 8,
-                    "height": 24,
-                    "contents": ""
-                }, {
-                    "thing": "Brick",
-                    "x": 176,
-                    "y": 24,
-                    "width": 8,
-                    "height": 24,
-                    "contents": ""
-                },{
-                    "thing": "Goomba",
-                    "x": 200,
-                    "y": 16
-                }, {
-                    "thing": "Brick",
-                    "x": 208,
-                    "y": 24,
-                    "width": 8,
-                    "height": 24,
-                    "contents": ""
-                }, {
-                    "thing": "Brick",
-                    "x": 192,
-                    "y": 24,
-                    "width": 8,
-                    "height": 24,
-                    "contents": ""
-                }]
-            }]
-        }, {
             "name": "1-1",
             "locations": [
                   { "entry": "Plain" },
@@ -325,12 +240,12 @@ FullScreenMario.prototype.settings.maps = {
                         { "thing": "Block", "x": 184, "y": 32 },
                         { "thing": "Brick", "x": 192, "y": 32 },
                         { "macro": "Pipe", "x": 224, "height": 16 },
-                        { "macro": "Pipe", "x": 304, "height": 16 },
+                        { "macro": "Pipe", "x": 304, "height": 24 },
                         { "thing": "Goomba", "x": 340, "y": 8 },
-                        { "macro": "Pipe", "x": 368, "height": 16 },
+                        { "macro": "Pipe", "x": 368, "height": 32 },
                         { "thing": "Goomba", "x": 412, "y": 8 },
                         { "thing": "Goomba", "x": 422, "y": 8 },
-                        { "macro": "Pipe", "x": 456, "height": 24, "transport": 2 },
+                        { "macro": "Pipe", "x": 456, "height": 32, "transport": 2 },
                         { "thing": "Block", "x": 512, "y": 40, "contents": "Mushroom1Up", "hidden": true },
                         { "macro": "Floor", "x": 568, "width": 120 },
                         { "thing": "Brick", "x": 616, "y": 32 },
@@ -3598,7 +3513,7 @@ FullScreenMario.prototype.settings.maps = {
                         { "thing": "CastleBlock", "x": 512, "y": 44, "fireballs": 6, "hidden": true },
                         { "thing": "Stone", "x": 536, "y": 32, "width": 40, "height": 32 },
                         { "thing": "Stone", "x": 536, "y": 80, "width": 40, "height": 24 },
-                        { "thing": "PipeHorizontal", "x": 544, "y": 48, },
+                        { "thing": "PipeHorizontal", "x": 544, "y": 48, "transport": 5 },
                         { "thing": "Stone", "x": 552, "y": 56, "width": 24, "height": 24 }
                     ]
                 }, {
@@ -3615,7 +3530,7 @@ FullScreenMario.prototype.settings.maps = {
                         { "thing": "Podoboo", "x": 160, "y": -32 },
                         { "macro": "Floor", "x": 184, "y": 24, "width": 48 },
                         { "thing": "Stone", "x": 184, "y": 80, "width": 48, "height": 16 },
-                        { "macro": "EndInsideCastle", "x": 232, "spawnType": "Bowser", "throwing": true, "transport": { "map": "1-1" } }
+                        { "macro": "EndInsideCastle", "x": 232, "spawnType": "Bowser", "throwing": true, "npc" : "Peach", "transport": { "map": "1-1" } }
                     ]
                 }
             ]

@@ -1,4 +1,4 @@
-FullScreenMario.prototype.settings.generator = {
+FullScreenMario.FullScreenMario.settings.generator = {
     "possibilities": {
         
         /* Overworld
@@ -4823,8 +4823,11 @@ FullScreenMario.prototype.settings.generator = {
                     "title": "EndOutsideCastle",
                     "arguments": {
                         "macro": "EndOutsideCastle",
-                        "transport": "Castle",
-                        "large": true
+                        "large": true,
+                        "transport": {
+                            "map": "Random",
+                            "location": "Castle"
+                        }
                     },
                     "sizing": {
                         "height": 0

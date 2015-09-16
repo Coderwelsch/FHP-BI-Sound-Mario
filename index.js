@@ -1,9 +1,9 @@
-document.onreadystatechange = function (event) {
+﻿document.onreadystatechange = function (event) {
     if (event.target.readyState !== "complete") {
         return;
     }
 
-    window.FSM = new FullScreenMario( {
+    window.FSM = new FullScreenMario.FullScreenMario( {
       	"width": window.innerWidth, 
       	"height": window.innerHeight,
       	"full": false,
@@ -48,7 +48,7 @@ function initAudio ( callback ) {
 		window.audio = new Audio();
 	}
 
-	if ( window.audio.src !== themeSrc ) {
+	if ( themeSrc && window.audio.src !== themeSrc && themeSrc ) {
 		window.audio.pause();
 		window.audio.src = themeSrc;
 	}
@@ -57,19 +57,21 @@ function initAudio ( callback ) {
 		resetVisualiser();
 	}
 
-	console.log( window.audio.name, $( theme ).attr( 'name' ) );
-
 	window.firstAudioInit = true;
 	
 	window.audio.loop = true;
 	window.audio.name = $( theme ).attr( 'name' );
-	window.audio.currentTime = theme.currentTime;
-	//window.audio.volume = theme.volume;
+	window.audio.currentTime = theme ? theme.currentTime : 0;
+	window.audio.volume = 1;
 
-	if ( theme.paused ) {
+	if ( theme && theme.paused ) {
 		window.audio.pause();
 	} else {
 		window.audio.play();
+	}
+
+	if ( theme ) {
+		theme.volume = 1;
 	}
 }
 
@@ -80,6 +82,8 @@ function initAnalyser () {
 
 	window.playerEvents = {};
 	window.frequencyEvents = {
+		defaultEvents: 'Overworld',
+
 		'Overworld': {
 			0: {
 				range: [ 100, 125 ],
@@ -256,8 +260,16 @@ function initAnalyser () {
 }
 
 function initVisualiser () {
-	for ( var key in frequencyEvents[ window.audio.name ] ) {
-		var item = frequencyEvents[ window.audio.name ][ key ];
+	var usedThemeEvents;
+
+	if ( window.audio.name in frequencyEvents ) {
+		usedThemeEvents = frequencyEvents[ window.audio.name ];
+	} else {
+		usedThemeEvents = frequencyEvents[ frequencyEvents.defaultEvents ];
+	}
+
+	for ( var key in usedThemeEvents ) {
+		var item = usedThemeEvents[ key ];
 		var $item = $( '<div class="column"><div class="box"></div></div>' )
 			.attr( 'name', window.audio.name ),
 
@@ -307,19 +319,19 @@ function processFrequences () {
 function movePlayer () {
 	var d = processedFrequences;
 
-	if ( !frequencyEvents[ window.audio.name ] ) {
-		throw "{NAME} not found in frequency data!".replace('{NAME}', window.audio.name );
+	if ( !frequencyEvents[ window.audio.name ] && window.location.hash === '#debug' ) {
+		console.warn( "{NAME} not found in frequency data!".replace('{NAME}', window.audio.name ) );
 	}
 
 	for ( var key in frequencyEvents[ window.audio.name ] ) {
 		var item = frequencyEvents[ window.audio.name ][ key ];
 
 		if ( d[ key ] >= item.range[ 0 ] && d[ key ] < item.range[ 1 ] ) {
-			$visualiser.find( '.column' ).eq( key ).find( '.range' ).addClass( 'active' );
+			window.$visualiser.find( '.column' ).eq( key ).find( '.range' ).addClass( 'active' );
 
 			item.action();
 		} else {
-			$visualiser.find( '.column' ).eq( key ).find( '.range' ).removeClass( 'active' );
+			window.$visualiser.find( '.column' ).eq( key ).find( '.range' ).removeClass( 'active' );
 		}
 	}
 }
@@ -337,7 +349,7 @@ function renderAudio () {
 
 		height = height == 100 ? 98 : height;
 
-		$visualiser.find( '.column' ).eq( i ).find( '.box' ).css('top', height + '%');
+		window.$visualiser.find( '.column' ).eq( i ).find( '.box' ).css('top', height + '%');
 	}
 
 	movePlayer();

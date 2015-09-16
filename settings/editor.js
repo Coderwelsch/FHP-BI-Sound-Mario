@@ -1,8 +1,9 @@
-(function (things, macros) {
-    FullScreenMario.prototype.settings.editor = {
-        "blocksize": FullScreenMario.unitsize * 4,
+FullScreenMario.FullScreenMario.settings.editor = (function (things, macros) {
+    return {
+        "blocksize": FullScreenMario.FullScreenMario.unitsize * 4,
         "mapDefault": {
             "name": "New Map",
+            "time": "Infinity",
             "locations": [
                 { "entry": "Plain" }
             ],
@@ -17,18 +18,19 @@
         },
         "mapSettingDefault": "Overworld",
         "mapEntryDefault": "Plain",
-        "things": things,
+        "prethings": things,
         "thingGroups": ["Text", "Character", "Solid", "Scenery"],
         "thingKeys": (function () {
             var keys = [];
+
             Object.keys(things).forEach(function (group) {
                 keys.push.apply(keys, Object.keys(things[group]));
             });
+
             return keys;
         })(),
         "macros": macros
     };
-    
 })({
     "Characters": {
         "Goomba": undefined,
@@ -175,13 +177,13 @@
             "xnum": 1,
             "ynum": 1,
             "xwidth": 8,
-            "ywidth": 8
+            "yheight": 8
         }
     },
     "Pattern": {
         "description": "Fill one of the preset Scenery background patterns.",
         "options": {
-            "Pattern": [
+            "pattern": [
                 "BackRegular", "BackCloud", "BackFence", "BackFenceMin", "BackFenceMin2", "BackFenceMin3"
             ],
             "repeat": "Number"
@@ -288,7 +290,11 @@
     "PlatformGenerator": {
         "description": "Add a columnn of infinitely generated platforms.",
         "options": {
-            "width": 8
+            "width": 8,
+            "direction": {
+                "type": "Number",
+                "options": [1, -1]
+            }
         }
     },
     "StartInsideCastle": {
@@ -298,9 +304,33 @@
         }
     },
     "EndOutsideCastle": {
-        "description": "End the map off with an outdoor flag and Castle."
+        "description": "End the map off with an outdoor flag and Castle.",
+        "options": {
+            "transport": "Location",
+            "large": "Boolean",
+            "castleDistance": {
+                "type": "Number",
+                "value": 24,
+                "mod": 1,
+            },
+            "walls": {
+                "type": "Number",
+                "value": 2
+            }
+        }
     },
     "EndInsideCastle": {
-        "description": "End the map off with an indoor bridge, Bowser, and Toad."
+        "description": "End the map off with an indoor bridge, Bowser, and Toad.",
+        "options": {
+            "transport": "Location",
+            "npc": {
+                "type": "String",
+                "options": ["Toad", "Peach"]
+            },
+            "hard": "Boolean",
+            "spawnType": "Everything",
+            "throwing": "Boolean",
+            "topScrollEnabler": "Boolean"
+        }
     }
 });

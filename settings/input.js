@@ -1,4 +1,4 @@
-FullScreenMario.prototype.settings.input = {
+FullScreenMario.FullScreenMario.settings.input = {
     "InputWritrArgs": {
         "aliases": {
             // Keyboard aliases
@@ -8,36 +8,33 @@ FullScreenMario.prototype.settings.input = {
             "down":   [83, 40],     // s,     down
             "sprint": [16, 17],     // shift, ctrl
             "pause":  [80],         // p (pause)
-            // Mute and Luigi disabled because there's a GUI for them now
-            // "mute":   [77],         // m (mute)
-            // "l":      [76],         // l (luigi)
             // Mouse aliases
             "rightclick": [3],
         },
         "triggers": {
             "onkeydown": {
-                "left": FullScreenMario.prototype.keyDownLeft,
-                "right": FullScreenMario.prototype.keyDownRight,
-                "up": FullScreenMario.prototype.keyDownUp,
-                "down": FullScreenMario.prototype.keyDownDown,
-                "sprint": FullScreenMario.prototype.keyDownSprint,
-                "pause": FullScreenMario.prototype.keyDownPause,
-                "mute": FullScreenMario.prototype.keyDownMute,
+                "left": FullScreenMario.FullScreenMario.prototype.keyDownLeft,
+                "right": FullScreenMario.FullScreenMario.prototype.keyDownRight,
+                "up": FullScreenMario.FullScreenMario.prototype.keyDownUp,
+                "down": FullScreenMario.FullScreenMario.prototype.keyDownDown,
+                "sprint": FullScreenMario.FullScreenMario.prototype.keyDownSprint,
+                "pause": FullScreenMario.FullScreenMario.prototype.keyDownPause,
+                "mute": FullScreenMario.FullScreenMario.prototype.keyDownMute,
             },
             "onkeyup": {
-                "left": FullScreenMario.prototype.keyUpLeft,
-                "right": FullScreenMario.prototype.keyUpRight,
-                "up": FullScreenMario.prototype.keyUpUp,
-                "down": FullScreenMario.prototype.keyUpDown,
-                "sprint": FullScreenMario.prototype.keyUpSprint,
-                "pause": FullScreenMario.prototype.keyUpPause
+                "left": FullScreenMario.FullScreenMario.prototype.keyUpLeft,
+                "right": FullScreenMario.FullScreenMario.prototype.keyUpRight,
+                "up": FullScreenMario.FullScreenMario.prototype.keyUpUp,
+                "down": FullScreenMario.FullScreenMario.prototype.keyUpDown,
+                "sprint": FullScreenMario.FullScreenMario.prototype.keyUpSprint,
+                "pause": FullScreenMario.FullScreenMario.prototype.keyUpPause
             },
             "onmousedown": {
-                "rightclick": FullScreenMario.prototype.mouseDownRight
+                "rightclick": FullScreenMario.FullScreenMario.prototype.mouseDownRight
             },
             "oncontextmenu": {},
             "ondevicemotion": {
-                "devicemotion": FullScreenMario.prototype.deviceMotion
+                "devicemotion": FullScreenMario.FullScreenMario.prototype.deviceMotion
             }
         }
     }

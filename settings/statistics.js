@@ -1,10 +1,10 @@
-FullScreenMario.prototype.settings.statistics = {
+FullScreenMario.FullScreenMario.settings.statistics = {
     "prefix": "FullScreenMario",
     "doMakeContainer": true,
     "displayChanges": {
         "Infinity": "INF"
     },
-    "containers": [
+    "containersArguments": [
         ["table", {
             "id": "dataDisplay",
             "style": {
@@ -24,9 +24,15 @@ FullScreenMario.prototype.settings.statistics = {
         }]
     ],
     "defaults": {
-        "element": "td"
+        "elementTag": "td"
     },
     "values": {
+        "volume": {
+            "valueDefault": 1
+        },
+        "muted": {
+            "valueDefault": false
+        },
         "power": {
             "valueDefault": 1,
             "storeLocally": false
@@ -56,7 +62,7 @@ FullScreenMario.prototype.settings.statistics = {
                 }
             },
             "onMinimum": function (EightBitter) {
-                EightBitter.killPlayer(FSM.player, true);
+                EightBitter.killPlayer(EightBitter.player, true);
             }
         },
         "world": {
