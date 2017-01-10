@@ -1,6 +1,6 @@
 # BI-Sound-Mario
 
-![Playing](assets/play.jpg)
+![Playing](https://raw.githubusercontent.com/Coderwelsch/BI-Sound-Mario/master/assets/play.jpg)
 
 Game sound visualisation by itselfs. A Super Mario Bros browser game that maps the background theme songs to the character controls of the Super Mario.
 
