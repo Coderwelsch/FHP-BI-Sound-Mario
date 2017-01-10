@@ -6,3 +6,7 @@ Game sound visualisation by itselfs. A Super Mario Bros browser game that maps t
 
 ## Demo
 You can see a demo under [http://projects.coderwelsch.com/fhp/basic-interface-sound-mario/](http://projects.coderwelsch.com/fhp/basic-interface-sound-mario/)
+
+## Thanks to FullScreenShenanigans
+Thanks to FullScreenShenanigans for the underlying framework of the html version of Super Mario Bros. You can find it under 
+[https://github.com/FullScreenShenanigans/FullScreenMario](https://github.com/FullScreenShenanigans/FullScreenMario)
